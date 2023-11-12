@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:qr_scanner/Cards/past_flashcard.dart';
+import 'package:qr_scanner/data/data.dart';
 
 class PastSession extends StatefulWidget {
   const PastSession({super.key});
@@ -20,9 +22,17 @@ class _PastSessionState extends State<PastSession> {
           },
         ),
       ),
-      body: const Center(
-        child: Text("Welcome to Past Parades Page"),
-      ),
+      body: ListView.builder(
+          itemCount: PastParade.length,
+          itemBuilder: (context, index) {
+            return PastFlashCard(
+                paradeId: PastParade[index].paradeId,
+                date: PastParade[index].date,
+                numberOfTokens: PastParade[index].numberOfTokens,
+                startTime: PastParade[index].startTime,
+                endTime: PastParade[index].endTime,
+                refreshmentType: PastParade[index].refreshmentType);
+          }),
     );
   }
 }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:qr_scanner/Cards/ongoing_flashcard.dart';
+import 'package:qr_scanner/data/data.dart';
 import 'package:qr_scanner/scanner.dart';
 
 class CurrentSession extends StatefulWidget {
@@ -22,14 +24,25 @@ class _CurrentSessionState extends State<CurrentSession> {
         ),
       ),
       body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => QRScannerWidget()),
-            );
-          },
-          child: const Text("Scan QR"),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            PresentFlashCard(
+              paradeId: CurrentParade.paradeId,
+              date: CurrentParade.date,
+              numberOfTokens: CurrentParade.numberOfTokens,
+              RefType: CurrentParade.refreshmentType,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => QRScannerWidget()),
+                );
+              },
+              child: const Text("Scan QR"),
+            ),
+          ],
         ),
       ),
     );

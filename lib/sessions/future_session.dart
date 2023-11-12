@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:qr_scanner/Cards/future_flashcard.dart';
+import 'package:qr_scanner/data/data.dart';
 
 class FutureSession extends StatefulWidget {
   const FutureSession({super.key});
@@ -20,9 +22,16 @@ class _FutureSessionState extends State<FutureSession> {
           },
         ),
       ),
-      body: const Center(
-        child: Text("Welcome to Future Parades Page"),
-      ),
+      body: ListView.builder(
+          itemCount: FutureParade.length,
+          itemBuilder: (context, index) {
+            return FutureFlashCard(
+                paradeId: FutureParade[index].paradeId,
+                date: FutureParade[index].date,
+                startTime: FutureParade[index].startTime,
+                endTime: FutureParade[index].endTime,
+                refreshmentType: FutureParade[index].refreshmentType);
+          }),
     );
   }
 }

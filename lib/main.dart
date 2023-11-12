@@ -47,7 +47,6 @@ class SessionOptions extends StatelessWidget {
                 context,
                 MaterialPageRoute(builder: (context) => const PastSession()),
               );
-              // correctVerificationModal(context);
             }),
         SessionButton(
             label: 'Ongoing Parade',
